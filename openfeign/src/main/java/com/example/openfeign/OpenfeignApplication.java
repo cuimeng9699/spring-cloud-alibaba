@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAsync
 @EnableFeignClients(basePackages = "com.example.openfeign.interfance")
 public class OpenfeignApplication {
-  
+
     public static void main(String[] args) {
         SpringApplication.run(OpenfeignApplication.class, args);
     }
