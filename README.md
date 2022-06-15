@@ -1,7 +1,8 @@
 # spring-cloud-alibaba
 
 #### 介绍
-springcloud阿里巴巴练习代码库
+微服务架构模板
+开始吸收各种优秀demo
 
 #### 软件架构
 软件架构说明
