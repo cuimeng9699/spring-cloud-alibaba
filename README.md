@@ -19,10 +19,15 @@ springcloud alibaba架构
 #### 使用说明
 
 1.  搜索安装的nacos注册中心目录到bin
-2.  Linux/Unix/Mac 执行 sh startup.sh -m standalone 
+2.  启动注册中心服务
+    Linux/Unix/Mac 执行 sh startup.sh -m standalone 
     Windows  执行  cmd startup.cmd -m standalone
 3.  修改数据库配置信息改成自己的 
-
+4.  关闭注册中心服务：
+    Linux/Unix/Mac
+    执行  sh shutdown.sh
+    Windows 
+    执行  cmd shutdown.cmd
 #### 参与贡献
 
 1.  Fork 本仓库
