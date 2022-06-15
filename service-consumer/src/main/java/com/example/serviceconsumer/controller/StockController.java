@@ -1,6 +1,5 @@
 package com.example.serviceconsumer.controller;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/stock")
 public class StockController {
 
-    @Value("${server.port}")
-    private String port;
+    /*@Value("${server.port}")
+    private String port;*/
 
     /**
      * 库存新增
@@ -34,6 +33,6 @@ public class StockController {
     public String subStock(){
         System.out.println("库存扣减成功");
 
-        return "库存服务-库存扣减成功 - 端口：" + port;
+        return "库存服务-库存扣减成功 -1";
     }
 }
