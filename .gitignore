@@ -3,11 +3,15 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
 .idea/
 .mvn/
-output/
+openfeign/target/
+service-consumer/target/
+service-nacos/target/
+service-nacosconfig/target/
 logs/
-target/
+
 ### STS ###
 .apt_generated
 .classpath
@@ -16,7 +20,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
-
+output/
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -29,10 +33,12 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
-
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
 
-### access log ###
+### access log
 access/
