@@ -24,6 +24,6 @@ public class UserContextTask {
     @Scheduled(cron = "0 */1 * * * ?")
     @Async
     public void userContextTask(){
-        System.out.println("=============过了一分钟===========");
+        System.out.println("=============过了一分钟了===========");
     }
 }
