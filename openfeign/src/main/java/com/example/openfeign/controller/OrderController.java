@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.openfeign.dao.po.User;
 import com.example.openfeign.dto.UserDTO;
 import com.example.openfeign.interfance.StockOpenFeignService;
+import com.example.openfeign.service.AbstractService;
 import com.example.openfeign.service.TestService;
 import com.example.openfeign.wrapper.BaseDTO;
 import com.example.openfeign.wrapper.ResponseTemplate;
@@ -29,6 +30,8 @@ public class OrderController {
     private TestService testService;
     @Value("#{'${ababa.myList}'.split(',')}")
     private List<String> myList;
+    @Resource(name = "abstractServiceExtImpl")
+    private AbstractService abstractService;
     /**
      * 新增订单
      * @return
@@ -56,5 +59,13 @@ public class OrderController {
         log.info("=============="+user);
         return ResponseTemplate.buildSuccessResult(user);
     }
-
+    /**
+     * test database
+     * @return
+     */
+    @PostMapping(value = "/mapper2",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseTemplate<String> mapper2(@RequestBody BaseDTO<UserDTO> request){
+        String test = abstractService.test();
+        return ResponseTemplate.buildSuccessResult(test);
+    }
 }
