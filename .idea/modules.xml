@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/openfeign/openfeign.iml" filepath="$PROJECT_DIR$/openfeign/openfeign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-consumer/service-consumer.iml" filepath="$PROJECT_DIR$/service-consumer/service-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-nacos/service-nacos.iml" filepath="$PROJECT_DIR$/service-nacos/service-nacos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-nacosconfig/service-nacosconfig.iml" filepath="$PROJECT_DIR$/service-nacosconfig/service-nacosconfig.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba.iml" />
+    </modules>
+  </component>
+</project>
