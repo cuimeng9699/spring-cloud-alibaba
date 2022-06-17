@@ -225,7 +225,8 @@
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.7</version>
                 <configuration>
-                    <configurationFile>/Users/cuimeng/coding/online------------/spring-cloud-alibaba/openfeign/src/main/resources/generatorConfig.xml</configurationFile>
+                    <!--这里要generatorConfig.xml的绝对路径-->
+                    <configurationFile>/Users/cuimeng/coding/demo/spring-cloud-alibaba/openfeign/src/main/resources/generatorConfig.xml</configurationFile>
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
                 </configuration>
