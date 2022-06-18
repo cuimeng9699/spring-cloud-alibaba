@@ -10,6 +10,7 @@ openfeign/target/
 service-consumer/target/
 service-nacos/target/
 service-nacosconfig/target/
+openfeign/src/main/resources/generatorConfig.xml
 logs/
 *.class
 *.log
@@ -46,3 +47,4 @@ build/
 
 ### access log
 access/
+

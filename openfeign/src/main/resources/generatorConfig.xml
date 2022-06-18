@@ -75,7 +75,7 @@
         tableName：是数据库表名
         domainObjectName：是实体类名字
         -->
-        <table tableName="user" domainObjectName="User"
+        <table tableName="distributed_lock" domainObjectName="DistributedLock"
                enableCountByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true"
