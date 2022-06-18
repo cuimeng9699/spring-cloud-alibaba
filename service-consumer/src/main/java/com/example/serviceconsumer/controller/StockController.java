@@ -1,15 +1,14 @@
 package com.example.serviceconsumer.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.share.foreign.api.StockRemoteService;
+import org.springframework.stereotype.Controller;
+
 
 /**
  * 库存服务
  */
-@RestController
-@RequestMapping("/stock")
-public class StockController {
+@Controller
+public class StockController implements StockRemoteService {
 
     /*@Value("${server.port}")
     private String port;*/
@@ -18,7 +17,7 @@ public class StockController {
      * 库存新增
      * @return
      */
-    @RequestMapping("/addStock")
+    @Override
     public String addStock(){
         System.out.println("库存新增成功");
 
@@ -29,7 +28,7 @@ public class StockController {
      * 库存扣减
      * @return
      */
-    @GetMapping("/subStock")
+    @Override
     public String subStock(){
         System.out.println("库存扣减成功");
 

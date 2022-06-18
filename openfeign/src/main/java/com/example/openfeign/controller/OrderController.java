@@ -3,7 +3,7 @@ package com.example.openfeign.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.example.openfeign.dao.po.User;
 import com.example.openfeign.dto.UserDTO;
-import com.example.openfeign.interfance.StockOpenFeignService;
+import com.share.foreign.api.StockRemoteService;
 import com.example.openfeign.service.AbstractService;
 import com.example.openfeign.service.TestService;
 import com.example.openfeign.wrapper.BaseDTO;
@@ -25,7 +25,7 @@ import java.util.List;
 public class OrderController {
 
     @Resource
-    private StockOpenFeignService stockOpenFeignService;
+    private StockRemoteService stockRemoteService;
     @Resource(name ="testServiceImpl" )
     private TestService testService;
     @Value("#{'${ababa.myList}'.split(',')}")
@@ -42,7 +42,7 @@ public class OrderController {
             log.info(s);
         }
         //调用库存扣减
-        String result = stockOpenFeignService.subStock();
+        String result = stockRemoteService.subStock();
 
         log.info("=============="+result);
         return "订单服务-库存扣减成功:" + result;

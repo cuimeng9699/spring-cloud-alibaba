@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringCloudApplication
 @EnableScheduling
 @EnableAsync
-@EnableFeignClients(basePackages = "com.example.openfeign.interfance")
+@EnableFeignClients(basePackages = "com.share.foreign.api")
 public class OpenfeignApplication {
 
     public static void main(String[] args) {

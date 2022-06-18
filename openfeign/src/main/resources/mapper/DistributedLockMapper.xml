@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.openfeign.dao.mapper.DistributedLockMapper">
+  <resultMap id="BaseResultMap" type="com.example.openfeign.dao.po.DistributedLock">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="lock_key" jdbcType="VARCHAR" property="lockKey" />
+    <result column="lock_status" jdbcType="INTEGER" property="lockStatus" />
+    <result column="lock_timeout" jdbcType="INTEGER" property="lockTimeout" />
+    <result column="lock_by" jdbcType="VARCHAR" property="lockBy" />
+    <result column="lock_time" jdbcType="TIMESTAMP" property="lockTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, lock_key, lock_status, lock_timeout, lock_by, lock_time
+  </sql>
+  <select id="selectByExample" parameterType="com.example.openfeign.dao.po.DistributedLockExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from distributed_lock
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="rows != null">
+      <if test="offset != null">
+        limit ${offset}, ${rows}
+      </if>
+      <if test="offset == null">
+        limit ${rows}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from distributed_lock
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from distributed_lock
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.openfeign.dao.po.DistributedLockExample">
+    delete from distributed_lock
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.openfeign.dao.po.DistributedLock">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into distributed_lock (lock_key, lock_status, lock_timeout, 
+      lock_by, lock_time)
+    values (#{lockKey,jdbcType=VARCHAR}, #{lockStatus,jdbcType=INTEGER}, #{lockTimeout,jdbcType=INTEGER}, 
+      #{lockBy,jdbcType=VARCHAR}, #{lockTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.openfeign.dao.po.DistributedLock">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into distributed_lock
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lockKey != null">
+        lock_key,
+      </if>
+      <if test="lockStatus != null">
+        lock_status,
+      </if>
+      <if test="lockTimeout != null">
+        lock_timeout,
+      </if>
+      <if test="lockBy != null">
+        lock_by,
+      </if>
+      <if test="lockTime != null">
+        lock_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lockKey != null">
+        #{lockKey,jdbcType=VARCHAR},
+      </if>
+      <if test="lockStatus != null">
+        #{lockStatus,jdbcType=INTEGER},
+      </if>
+      <if test="lockTimeout != null">
+        #{lockTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="lockBy != null">
+        #{lockBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTime != null">
+        #{lockTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.openfeign.dao.po.DistributedLockExample" resultType="java.lang.Long">
+    select count(*) from distributed_lock
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update distributed_lock
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.lockKey != null">
+        lock_key = #{record.lockKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lockStatus != null">
+        lock_status = #{record.lockStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.lockTimeout != null">
+        lock_timeout = #{record.lockTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="record.lockBy != null">
+        lock_by = #{record.lockBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lockTime != null">
+        lock_time = #{record.lockTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update distributed_lock
+    set id = #{record.id,jdbcType=BIGINT},
+      lock_key = #{record.lockKey,jdbcType=VARCHAR},
+      lock_status = #{record.lockStatus,jdbcType=INTEGER},
+      lock_timeout = #{record.lockTimeout,jdbcType=INTEGER},
+      lock_by = #{record.lockBy,jdbcType=VARCHAR},
+      lock_time = #{record.lockTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.openfeign.dao.po.DistributedLock">
+    update distributed_lock
+    <set>
+      <if test="lockKey != null">
+        lock_key = #{lockKey,jdbcType=VARCHAR},
+      </if>
+      <if test="lockStatus != null">
+        lock_status = #{lockStatus,jdbcType=INTEGER},
+      </if>
+      <if test="lockTimeout != null">
+        lock_timeout = #{lockTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="lockBy != null">
+        lock_by = #{lockBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTime != null">
+        lock_time = #{lockTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.openfeign.dao.po.DistributedLock">
+    update distributed_lock
+    set lock_key = #{lockKey,jdbcType=VARCHAR},
+      lock_status = #{lockStatus,jdbcType=INTEGER},
+      lock_timeout = #{lockTimeout,jdbcType=INTEGER},
+      lock_by = #{lockBy,jdbcType=VARCHAR},
+      lock_time = #{lockTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectOneByExample" parameterType="com.example.openfeign.dao.po.DistributedLockExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from distributed_lock
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    insert into distributed_lock
+    (lock_key, lock_status, lock_timeout, lock_by, lock_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.lockKey,jdbcType=VARCHAR}, #{item.lockStatus,jdbcType=INTEGER}, #{item.lockTimeout,jdbcType=INTEGER}, 
+        #{item.lockBy,jdbcType=VARCHAR}, #{item.lockTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="batchInsertSelective" keyColumn="id" keyProperty="list.id" parameterType="map" useGeneratedKeys="true">
+    insert into distributed_lock (
+    <foreach collection="selective" item="column" separator=",">
+      ${column.escapedColumnName}
+    </foreach>
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <foreach collection="selective" item="column" separator=",">
+        <if test="'lock_key'.toString() == column.value">
+          #{item.lockKey,jdbcType=VARCHAR}
+        </if>
+        <if test="'lock_status'.toString() == column.value">
+          #{item.lockStatus,jdbcType=INTEGER}
+        </if>
+        <if test="'lock_timeout'.toString() == column.value">
+          #{item.lockTimeout,jdbcType=INTEGER}
+        </if>
+        <if test="'lock_by'.toString() == column.value">
+          #{item.lockBy,jdbcType=VARCHAR}
+        </if>
+        <if test="'lock_time'.toString() == column.value">
+          #{item.lockTime,jdbcType=TIMESTAMP}
+        </if>
+      </foreach>
+      )
+    </foreach>
+  </insert>
+</mapper>

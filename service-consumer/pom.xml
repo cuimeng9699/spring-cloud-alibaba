@@ -49,6 +49,11 @@
             <artifactId>spring-cloud-commons</artifactId>
             <version>2.2.9.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.share.foreign</groupId>
+            <artifactId>foreign-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
