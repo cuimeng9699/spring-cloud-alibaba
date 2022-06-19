@@ -4,7 +4,7 @@ import com.share.foreign.enums.systemEnums.ErrorCode;
 
 /**
  * @ClassName BaseException
- * @Description TODO
+ * @Description 自定义异常
  * @Author Mr.Cui
  * @Date 4/28/22 3:40 PM
  */

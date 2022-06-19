@@ -2,7 +2,7 @@ package com.example.openfeign.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.openfeign.dao.po.User;
-import com.share.foreign.enums.UserDTO;
+import com.share.foreign.dto.UserDTO;
 import com.share.foreign.api.StockRemoteService;
 import com.example.openfeign.service.AbstractService;
 import com.example.openfeign.service.TestService;

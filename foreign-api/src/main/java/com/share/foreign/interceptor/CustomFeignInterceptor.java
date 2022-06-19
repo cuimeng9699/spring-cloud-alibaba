@@ -2,7 +2,7 @@ package com.share.foreign.interceptor;
 
 /**
  * @ClassName CustomFeignInterceptor
- * @Description TODO
+ * @Description 自定义feign拦截器
  * @Author Mr.Cui
  * @Date 3/2/22 3:57 PM
  */
@@ -14,6 +14,7 @@ import java.util.UUID;
 
 /**
  * 自定义feign拦截器
+ * @author Mr.Cui
  */
 public class CustomFeignInterceptor implements RequestInterceptor {
 

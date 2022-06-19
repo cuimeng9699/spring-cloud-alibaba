@@ -1,4 +1,4 @@
-package com.share.foreign.enums;
+package com.share.foreign.dto;
 
 import lombok.Data;
 
