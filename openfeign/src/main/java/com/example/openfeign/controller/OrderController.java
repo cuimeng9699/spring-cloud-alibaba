@@ -2,6 +2,7 @@ package com.example.openfeign.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.openfeign.dao.po.User;
+import com.example.openfeign.utils.UserContext;
 import com.share.foreign.dto.UserDTO;
 import com.share.foreign.api.StockRemoteService;
 import com.example.openfeign.service.AbstractService;
@@ -43,7 +44,7 @@ public class OrderController {
         }
         //调用库存扣减
         String result = stockRemoteService.subStock();
-
+        UserDTO currentUser = UserContext.getCurrentUser();
         log.info("=============="+result);
         return "订单服务-库存扣减成功:" + result;
     }

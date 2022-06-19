@@ -1,5 +1,6 @@
 package com.share.foreign.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
  * @Date 6/9/22 10:12 AM
  */
 @Data
+@Builder
 public class UserDTO {
 
     private Integer id;
