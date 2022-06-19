@@ -1,7 +1,10 @@
-package com.example.openfeign.utils;
+package com.share.foreign.utils;
 
 import java.util.UUID;
 
+/**
+ * @author Mr.Cui
+ */
 public class UUIDUtil {
     /**
      * 获得指定数目的UUID

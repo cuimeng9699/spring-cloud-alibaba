@@ -2,12 +2,12 @@ package com.example.openfeign.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.openfeign.dao.po.User;
-import com.example.openfeign.dto.UserDTO;
+import com.share.foreign.enums.UserDTO;
 import com.share.foreign.api.StockRemoteService;
 import com.example.openfeign.service.AbstractService;
 import com.example.openfeign.service.TestService;
-import com.example.openfeign.wrapper.BaseDTO;
-import com.example.openfeign.wrapper.ResponseTemplate;
+import com.share.foreign.wrapper.BaseDTO;
+import com.share.foreign.wrapper.ResponseTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;

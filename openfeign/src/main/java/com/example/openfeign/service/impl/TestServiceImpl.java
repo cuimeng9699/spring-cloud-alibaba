@@ -2,8 +2,8 @@ package com.example.openfeign.service.impl;
 
 import com.example.openfeign.dao.mapper.extend.UserExtMapper;
 import com.example.openfeign.dao.po.User;
-import com.example.openfeign.enums.systemEnums.ErrorCode;
-import com.example.openfeign.exception.BaseException;
+import com.share.foreign.enums.systemEnums.ErrorCode;
+import com.share.foreign.exception.BaseException;
 import com.example.openfeign.service.TestService;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static com.example.openfeign.enums.systemEnums.ErrorCode.BIZ_ERROR;
+import static com.share.foreign.enums.systemEnums.ErrorCode.BIZ_ERROR;
 
 /**
  * @ClassName TestServiceImpl

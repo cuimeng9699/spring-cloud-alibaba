@@ -1,4 +1,4 @@
-package com.example.openfeign.utils;
+package com.share.foreign.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.example.openfeign.wrapper;
+package com.share.foreign.wrapper;
 
 import lombok.Data;
 

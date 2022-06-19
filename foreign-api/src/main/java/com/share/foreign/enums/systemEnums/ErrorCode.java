@@ -1,4 +1,4 @@
-package com.example.openfeign.enums.systemEnums;
+package com.share.foreign.enums.systemEnums;
 
 public enum ErrorCode {
     FAILED_REQUEST(500, "系统内部异常", "FAILED"),

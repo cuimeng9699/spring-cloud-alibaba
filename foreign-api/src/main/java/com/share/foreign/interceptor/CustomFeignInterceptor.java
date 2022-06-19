@@ -1,4 +1,4 @@
-package com.example.openfeign.interceptor;
+package com.share.foreign.interceptor;
 
 /**
  * @ClassName CustomFeignInterceptor

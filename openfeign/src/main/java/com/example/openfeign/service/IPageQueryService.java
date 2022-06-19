@@ -1,7 +1,7 @@
 package com.example.openfeign.service;
 
 import com.example.openfeign.dao.po.UserExtend;
-import com.example.openfeign.utils.PageResult;
+import com.share.foreign.utils.PageResult;
 
 /**
  * @author Mr.Cui

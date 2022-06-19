@@ -2,8 +2,8 @@ package com.example.openfeign.controller;
 
 import com.example.openfeign.dao.po.UserExtend;
 import com.example.openfeign.service.IPageQueryService;
-import com.example.openfeign.utils.PageResult;
-import com.example.openfeign.wrapper.ResponseTemplate;
+import com.share.foreign.utils.PageResult;
+import com.share.foreign.wrapper.ResponseTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

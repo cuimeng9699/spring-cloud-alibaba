@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.7.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <groupId>com.example</groupId>
@@ -97,8 +97,6 @@
             <scope>provided</scope>
         </dependency>
 
-
-        <!--日志的版本有很多，这里我们导入比较流行的log4j日志-->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -144,6 +142,7 @@
             <artifactId>redisson</artifactId>
             <version>3.13.2</version>
         </dependency>
+
         <dependency>
             <groupId>com.share.foreign</groupId>
             <artifactId>foreign-api</artifactId>

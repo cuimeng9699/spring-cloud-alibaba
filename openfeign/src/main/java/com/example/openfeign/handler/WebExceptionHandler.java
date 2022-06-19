@@ -1,8 +1,8 @@
 package com.example.openfeign.handler;
 
-import com.example.openfeign.exception.BaseException;
-import com.example.openfeign.enums.systemEnums.ErrorCode;
-import com.example.openfeign.wrapper.ResponseTemplate;
+import com.share.foreign.exception.BaseException;
+import com.share.foreign.enums.systemEnums.ErrorCode;
+import com.share.foreign.wrapper.ResponseTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

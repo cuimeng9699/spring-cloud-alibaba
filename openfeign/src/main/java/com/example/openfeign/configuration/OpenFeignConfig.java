@@ -1,6 +1,6 @@
 package com.example.openfeign.configuration;
 
-import com.example.openfeign.interceptor.CustomFeignInterceptor;
+import com.share.foreign.interceptor.CustomFeignInterceptor;
 import feign.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

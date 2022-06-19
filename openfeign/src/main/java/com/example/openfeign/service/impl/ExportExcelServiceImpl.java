@@ -2,7 +2,7 @@ package com.example.openfeign.service.impl;
 
 import com.example.openfeign.dao.mapper.extend.UserExtendExtMapper;
 import com.example.openfeign.dao.po.UserExtend;
-import com.example.openfeign.enums.ExcelEnum;
+import com.share.foreign.enums.ExcelEnum;
 import com.example.openfeign.service.IExportExcelService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;

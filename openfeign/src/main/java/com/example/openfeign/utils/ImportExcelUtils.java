@@ -1,6 +1,6 @@
 package com.example.openfeign.utils;
 
-import com.example.openfeign.exception.BaseException;
+import com.share.foreign.exception.BaseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;

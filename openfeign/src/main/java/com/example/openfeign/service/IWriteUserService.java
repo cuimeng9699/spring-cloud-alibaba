@@ -1,6 +1,6 @@
 package com.example.openfeign.service;
 
-import com.example.openfeign.dto.UserExtendDTO;
+import com.share.foreign.dto.UserExtendDTO;
 
 /**
  * @author Mr.Cui

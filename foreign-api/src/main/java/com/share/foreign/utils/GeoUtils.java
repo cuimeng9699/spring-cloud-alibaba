@@ -1,6 +1,6 @@
-package com.example.openfeign.utils;
+package com.share.foreign.utils;
 
-import com.example.openfeign.dto.GpsInfo;
+import com.share.foreign.dto.GpsInfo;
 import lombok.extern.slf4j.Slf4j;
 
 import static java.lang.Math.PI;

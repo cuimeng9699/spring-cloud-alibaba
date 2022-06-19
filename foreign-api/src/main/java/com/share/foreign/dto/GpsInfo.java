@@ -1,4 +1,4 @@
-package com.example.openfeign.dto;
+package com.share.foreign.dto;
 
 import lombok.Builder;
 import lombok.Data;

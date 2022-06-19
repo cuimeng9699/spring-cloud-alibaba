@@ -1,4 +1,4 @@
-package com.example.openfeign.dto;
+package com.share.foreign.enums;
 
 import lombok.Data;
 

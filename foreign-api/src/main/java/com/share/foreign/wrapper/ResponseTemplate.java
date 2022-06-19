@@ -1,6 +1,6 @@
-package com.example.openfeign.wrapper;
+package com.share.foreign.wrapper;
 
-import com.example.openfeign.enums.systemEnums.ErrorCode;
+import com.share.foreign.enums.systemEnums.ErrorCode;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;

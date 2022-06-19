@@ -3,8 +3,8 @@ package com.example.openfeign.service.impl;
 import com.example.openfeign.dao.mapper.extend.UserExtendExtMapper;
 import com.example.openfeign.dao.po.UserExtend;
 import com.example.openfeign.service.IPageQueryService;
-import com.example.openfeign.utils.Page;
-import com.example.openfeign.utils.PageResult;
+import com.share.foreign.utils.Page;
+import com.share.foreign.utils.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

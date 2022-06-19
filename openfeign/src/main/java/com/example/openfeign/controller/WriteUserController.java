@@ -1,10 +1,10 @@
 package com.example.openfeign.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.openfeign.dto.UserExtendDTO;
+import com.share.foreign.dto.UserExtendDTO;
 import com.example.openfeign.service.IWriteUserService;
-import com.example.openfeign.wrapper.BaseDTO;
-import com.example.openfeign.wrapper.ResponseTemplate;
+import com.share.foreign.wrapper.BaseDTO;
+import com.share.foreign.wrapper.ResponseTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

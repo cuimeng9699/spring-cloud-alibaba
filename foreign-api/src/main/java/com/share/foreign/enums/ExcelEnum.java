@@ -1,4 +1,4 @@
-package com.example.openfeign.enums;
+package com.share.foreign.enums;
 
 import lombok.Getter;
 

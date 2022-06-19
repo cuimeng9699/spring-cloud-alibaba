@@ -2,7 +2,7 @@ package com.example.openfeign.service.impl;
 
 import com.example.openfeign.dao.mapper.extend.UserExtendExtMapper;
 import com.example.openfeign.dao.po.UserExtend;
-import com.example.openfeign.dto.UserExtendDTO;
+import com.share.foreign.dto.UserExtendDTO;
 import com.example.openfeign.service.IWriteUserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

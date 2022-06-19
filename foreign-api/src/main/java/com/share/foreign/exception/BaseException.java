@@ -1,6 +1,6 @@
-package com.example.openfeign.exception;
+package com.share.foreign.exception;
 
-import com.example.openfeign.enums.systemEnums.ErrorCode;
+import com.share.foreign.enums.systemEnums.ErrorCode;
 
 /**
  * @ClassName BaseException

@@ -21,7 +21,6 @@ public class DateUtils {
     public static final String PATTERN1 = "yyyyMMdd";
     public static final String PATTERN2 = "yyyy-MM-dd-HH-mm-ss";
     public static final DateTimeFormatter DEFAULT_FORMATTER = DateTimeFormatter.ofPattern(DEFAULT_PATTERN);
-    public static final FastDateFormat sdf = FastDateFormat.getInstance(DEFAULT_PATTERN);
     public static final String YYMMDD_PATTERN = "yyyy-MM-dd";
     public static final String YY_PATTERN = "yyyy";
     public static final String NO_BLANK_PATTERN = "yyyyMMddHHmmss";

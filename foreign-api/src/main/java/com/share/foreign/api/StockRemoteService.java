@@ -1,11 +1,12 @@
 package com.share.foreign.api;
 
+import com.share.foreign.interceptor.CustomFeignInterceptor;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-@FeignClient(name = "${remote.service.consumer.name}", contextId = "stock")
+@FeignClient(name = "${remote.service.consumer.name}", contextId = "stock",configuration = CustomFeignInterceptor.class)
 public interface StockRemoteService {
 
     //声明需要调用的rest接口对应的方法
