@@ -45,7 +45,7 @@ public class OrderController {
         //调用库存扣减
         String result = stockRemoteService.subStock();
         UserDTO currentUser = UserContext.getCurrentUser();
-        log.info("=============="+result);
+        log.debug("=============="+result);
         return "订单服务-库存扣减成功:" + result;
     }
     /**
@@ -57,7 +57,7 @@ public class OrderController {
         log.info("请求头数据信息为{}:", JSONObject.toJSONString(request));
         User user = testService.getUserById(request.getBody().getId());
 
-        log.info("=============="+user);
+        log.debug("=============="+user);
         return ResponseTemplate.buildSuccessResult(user);
     }
     /**
