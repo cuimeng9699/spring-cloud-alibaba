@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.openfeign.dao.mapper.extend.AuthPermissionExtMapper">
+  <resultMap id="BaseResultMap" type="com.example.openfeign.dao.po.AuthPermission">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="permission_tag" jdbcType="VARCHAR" property="permissionTag" />
+    <result column="permission_name" jdbcType="VARCHAR" property="permissionName" />
+    <result column="permission_type" jdbcType="VARCHAR" property="permissionType" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, url, permission_tag, permission_name, permission_type, parent_id, create_time, 
+    update_time, is_deleted
+  </sql>
+  <select id="selectByPermissionTags" resultType="com.example.openfeign.dao.po.AuthPermission">
+    select
+    <include refid="Base_Column_List"/>
+    FROM
+    auth_permission
+    where r.is_deleted = FALSE
+    <if test="permissionTags != null and permissionTags.size() > 0">
+      and permission_tag in (<foreach collection="permissionTags" item="permissionTag" separator=",">
+      #{permissionTag}</foreach>)
+    </if>
+  </select>
+  <select id="selectByIds" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    FROM
+    auth_permission
+    where is_deleted = FALSE
+    <if test="ids != null and ids.size() > 0">
+      and id in (<foreach collection="ids" item="id" separator=",">#{id}</foreach>)
+    </if>
+  </select>
+  <select id="selectAuthPermissionByParentIdList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    FROM
+    auth_permission
+    where is_deleted = FALSE
+    <if test="parentIdList != null and parentIdList.size() > 0">
+      and parent_id in (<foreach collection="parentIdList" item="parent_id" separator=",">#{parent_id}</foreach>)
+    </if>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    FROM
+    auth_permission
+    where is_deleted = FALSE
+  </select>
+  <select id="selectByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    FROM
+    auth_permission
+    where is_deleted = FALSE
+    limit ${offset}, ${limit}
+  </select>
+  <select id="selectAllCount" resultType="java.lang.Long">
+    select
+      count(1)
+    FROM
+      auth_permission
+    where is_deleted = FALSE
+  </select>
+  <select id="selectAuthPermissionByParentId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    FROM
+    auth_permission
+    where is_deleted = FALSE
+    <if test="parent_id !=null">
+      and parent_id = #{parentId}
+    </if>
+  </select>
+  <select id="selectOperateAuthority" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    FROM
+    auth_permission
+    where is_deleted = FALSE
+    <if test="ids != null and ids.size() > 0">
+      and id in (<foreach collection="ids" item="id" separator=",">#{id}</foreach>)
+    </if>
+    and is_operate_authority = 1
+  </select>
+  <select id="selectByPermissionTag" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    FROM
+    auth_permission
+    where is_deleted = FALSE
+    and permission_tag = #{permissionTag,jdbcType=VARCHAR} limit 1
+  </select>
+</mapper>
