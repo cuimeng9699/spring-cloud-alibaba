@@ -680,5 +680,25 @@ public class NumberUtil {
     public static Double getDecimalToDouble(BigDecimal num) {
         return num == null ? BigDecimal.ZERO.doubleValue() : num.doubleValue();
     }
+
+	public static BigDecimal getBigDecimal(Object value) {
+		BigDecimal ret = BigDecimal.ZERO;
+		if (value != null) {
+			if (value instanceof BigDecimal) {
+				ret = (BigDecimal) value;
+			}
+		}
+		return ret;
+	}
+
+	/*public static Boolean isNumber (String str){
+		if (StringUtils.isEmpty(str)){
+			return false;
+		}
+		Pattern pattern = Pattern.compile("^[-+]?(([0-9]+)([.]([0-9]+))?|([.]([0-9]+))?)$");
+		Matcher isNum = pattern.matcher(str);
+		return isNum.matches();
+	}*/
+
 }
 

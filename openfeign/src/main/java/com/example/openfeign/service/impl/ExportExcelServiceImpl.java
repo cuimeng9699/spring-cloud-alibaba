@@ -2,8 +2,9 @@ package com.example.openfeign.service.impl;
 
 import com.example.openfeign.dao.mapper.extend.UserExtendExtMapper;
 import com.example.openfeign.dao.po.UserExtend;
-import com.share.foreign.enums.ExcelEnum;
 import com.example.openfeign.service.IExportExcelService;
+import com.share.foreign.dto.GroupDTO;
+import com.share.foreign.enums.ExcelEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -15,9 +16,12 @@ import javax.annotation.Resource;
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName ExportExcelServiceImpl
@@ -101,4 +105,31 @@ public class ExportExcelServiceImpl implements IExportExcelService {
         }
     }
 
+  public static void main(String[] args) {
+      // 准备数据
+      List<GroupDTO> userList = new ArrayList<GroupDTO>();
+      for (int i = 0; i < 100; i++) {
+          GroupDTO user = new GroupDTO(i,new BigDecimal(i+"."+i));
+          userList.add(user);
+      }
+      Map<Long, List<GroupDTO>> collect = userList.parallelStream().collect(Collectors.groupingBy(GroupDTO::getId));
+    for (Long aLong : collect.keySet()) {
+      //
+      System.out.println(aLong);
+    }
+// for version
+      BigDecimal result1 = BigDecimal.ZERO;
+      for (GroupDTO user : userList) {
+          result1 = result1.add(user.getMoney());
+      }
+      System.out.println("result1 = "+result1);
+      BigDecimal result2 = userList.stream()
+              // 将user对象的mongey取出来map为Bigdecimal
+              .map(GroupDTO::getMoney)
+              // 使用reduce聚合函数,实现累加器
+              .reduce(BigDecimal.ZERO,BigDecimal::add);
+      System.out.println("result2 = "+result2);
+      long count = userList.stream().count();
+    System.out.println(count);
+  }
 }

@@ -75,7 +75,7 @@
         tableName：是数据库表名
         domainObjectName：是实体类名字
         -->
-        <table tableName="auth_user" domainObjectName="AuthUser"
+        <!--<table tableName="auth_user" domainObjectName="AuthUser"
                enableCountByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true"
@@ -140,8 +140,8 @@
                enableUpdateByPrimaryKey="true"
                enableInsert="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="auth_user_department" domainObjectName="AuthUserDepartment"
+        </table>-->
+        <table tableName="operation_sql_config" domainObjectName="OperationSqlConfig"
                enableCountByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true"

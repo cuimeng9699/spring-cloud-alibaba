@@ -1,13 +1,29 @@
 package com.example.openfeign;
 
+import com.example.openfeign.dao.mapper.extend.UserExtMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
+
 @SpringBootTest
 class OpenfeignApplicationTests {
+    @Resource
+    private UserExtMapper userExtMapper;
 
     @Test
     void contextLoads() {
+        /*String sql = "SELECT (CASE WHEN user_name = '张三' then '111'\n" +
+                "ELSE '222' end)as NAME, (city_id+area_id)as num\n" +
+                " FROM user_extend";*/
+        //String sql = "delete from user_extend where id = 17";
+        //List<Map> sql1 = userExtMapper.getSql(sql);
+
+    Map map = new HashMap();
+    map.put("tableName","user");
+        userExtMapper.delete(map);
     }
 
     /*@Autowired

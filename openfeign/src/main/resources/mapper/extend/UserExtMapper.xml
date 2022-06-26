@@ -11,5 +11,10 @@
   <sql id="Base_Column_List">
     id, `name`, birthday, address
   </sql>
-
+<select id="getSql" parameterType="string" resultType="java.util.LinkedHashMap">
+  ${value}
+</select>
+  <update id="delete" parameterType="map" statementType="STATEMENT">
+    delete from ${tableName}
+  </update>
 </mapper>

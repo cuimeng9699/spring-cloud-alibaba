@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.openfeign.dao.mapper.OperationSqlConfigMapper">
+  <resultMap id="BaseResultMap" type="com.example.openfeign.dao.po.OperationSqlConfig">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="operation_type" jdbcType="VARCHAR" property="operationType" />
+    <result column="operation_table" jdbcType="VARCHAR" property="operationTable" />
+    <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
+    <result column="term" jdbcType="VARCHAR" property="term" />
+    <result column="order_group" jdbcType="VARCHAR" property="orderGroup" />
+    <result column="is_easy_sql" jdbcType="BIT" property="isEasySql" />
+    <result column="opreation_desc" jdbcType="VARCHAR" property="opreationDesc" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, operation_type, operation_table, field_name, term, order_group, is_easy_sql, 
+    opreation_desc, create_time, update_time, is_deleted
+  </sql>
+  <select id="selectByExample" parameterType="com.example.openfeign.dao.po.OperationSqlConfigExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from operation_sql_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="rows != null">
+      <if test="offset != null">
+        limit ${offset}, ${rows}
+      </if>
+      <if test="offset == null">
+        limit ${rows}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from operation_sql_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from operation_sql_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.openfeign.dao.po.OperationSqlConfigExample">
+    delete from operation_sql_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.openfeign.dao.po.OperationSqlConfig">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into operation_sql_config (operation_type, operation_table, field_name, 
+      term, order_group, is_easy_sql, 
+      opreation_desc, create_time, update_time, 
+      is_deleted)
+    values (#{operationType,jdbcType=VARCHAR}, #{operationTable,jdbcType=VARCHAR}, #{fieldName,jdbcType=VARCHAR}, 
+      #{term,jdbcType=VARCHAR}, #{orderGroup,jdbcType=VARCHAR}, #{isEasySql,jdbcType=BIT}, 
+      #{opreationDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.openfeign.dao.po.OperationSqlConfig">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into operation_sql_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="operationType != null">
+        operation_type,
+      </if>
+      <if test="operationTable != null">
+        operation_table,
+      </if>
+      <if test="fieldName != null">
+        field_name,
+      </if>
+      <if test="term != null">
+        term,
+      </if>
+      <if test="orderGroup != null">
+        order_group,
+      </if>
+      <if test="isEasySql != null">
+        is_easy_sql,
+      </if>
+      <if test="opreationDesc != null">
+        opreation_desc,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="operationType != null">
+        #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTable != null">
+        #{operationTable,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null">
+        #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null">
+        #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="orderGroup != null">
+        #{orderGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="isEasySql != null">
+        #{isEasySql,jdbcType=BIT},
+      </if>
+      <if test="opreationDesc != null">
+        #{opreationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.openfeign.dao.po.OperationSqlConfigExample" resultType="java.lang.Long">
+    select count(*) from operation_sql_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update operation_sql_config
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.operationType != null">
+        operation_type = #{record.operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operationTable != null">
+        operation_table = #{record.operationTable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fieldName != null">
+        field_name = #{record.fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.term != null">
+        term = #{record.term,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderGroup != null">
+        order_group = #{record.orderGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isEasySql != null">
+        is_easy_sql = #{record.isEasySql,jdbcType=BIT},
+      </if>
+      <if test="record.opreationDesc != null">
+        opreation_desc = #{record.opreationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDeleted != null">
+        is_deleted = #{record.isDeleted,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update operation_sql_config
+    set id = #{record.id,jdbcType=BIGINT},
+      operation_type = #{record.operationType,jdbcType=VARCHAR},
+      operation_table = #{record.operationTable,jdbcType=VARCHAR},
+      field_name = #{record.fieldName,jdbcType=VARCHAR},
+      term = #{record.term,jdbcType=VARCHAR},
+      order_group = #{record.orderGroup,jdbcType=VARCHAR},
+      is_easy_sql = #{record.isEasySql,jdbcType=BIT},
+      opreation_desc = #{record.opreationDesc,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{record.isDeleted,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.openfeign.dao.po.OperationSqlConfig">
+    update operation_sql_config
+    <set>
+      <if test="operationType != null">
+        operation_type = #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTable != null">
+        operation_table = #{operationTable,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null">
+        field_name = #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null">
+        term = #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="orderGroup != null">
+        order_group = #{orderGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="isEasySql != null">
+        is_easy_sql = #{isEasySql,jdbcType=BIT},
+      </if>
+      <if test="opreationDesc != null">
+        opreation_desc = #{opreationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.openfeign.dao.po.OperationSqlConfig">
+    update operation_sql_config
+    set operation_type = #{operationType,jdbcType=VARCHAR},
+      operation_table = #{operationTable,jdbcType=VARCHAR},
+      field_name = #{fieldName,jdbcType=VARCHAR},
+      term = #{term,jdbcType=VARCHAR},
+      order_group = #{orderGroup,jdbcType=VARCHAR},
+      is_easy_sql = #{isEasySql,jdbcType=BIT},
+      opreation_desc = #{opreationDesc,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectOneByExample" parameterType="com.example.openfeign.dao.po.OperationSqlConfigExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from operation_sql_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    insert into operation_sql_config
+    (operation_type, operation_table, field_name, term, order_group, is_easy_sql, opreation_desc, 
+      create_time, update_time, is_deleted)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.operationType,jdbcType=VARCHAR}, #{item.operationTable,jdbcType=VARCHAR}, 
+        #{item.fieldName,jdbcType=VARCHAR}, #{item.term,jdbcType=VARCHAR}, #{item.orderGroup,jdbcType=VARCHAR}, 
+        #{item.isEasySql,jdbcType=BIT}, #{item.opreationDesc,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.isDeleted,jdbcType=BIT})
+    </foreach>
+  </insert>
+  <insert id="batchInsertSelective" keyColumn="id" keyProperty="list.id" parameterType="map" useGeneratedKeys="true">
+    insert into operation_sql_config (
+    <foreach collection="selective" item="column" separator=",">
+      ${column.escapedColumnName}
+    </foreach>
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <foreach collection="selective" item="column" separator=",">
+        <if test="'operation_type'.toString() == column.value">
+          #{item.operationType,jdbcType=VARCHAR}
+        </if>
+        <if test="'operation_table'.toString() == column.value">
+          #{item.operationTable,jdbcType=VARCHAR}
+        </if>
+        <if test="'field_name'.toString() == column.value">
+          #{item.fieldName,jdbcType=VARCHAR}
+        </if>
+        <if test="'term'.toString() == column.value">
+          #{item.term,jdbcType=VARCHAR}
+        </if>
+        <if test="'order_group'.toString() == column.value">
+          #{item.orderGroup,jdbcType=VARCHAR}
+        </if>
+        <if test="'is_easy_sql'.toString() == column.value">
+          #{item.isEasySql,jdbcType=BIT}
+        </if>
+        <if test="'opreation_desc'.toString() == column.value">
+          #{item.opreationDesc,jdbcType=VARCHAR}
+        </if>
+        <if test="'create_time'.toString() == column.value">
+          #{item.createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'update_time'.toString() == column.value">
+          #{item.updateTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'is_deleted'.toString() == column.value">
+          #{item.isDeleted,jdbcType=BIT}
+        </if>
+      </foreach>
+      )
+    </foreach>
+  </insert>
+</mapper>
