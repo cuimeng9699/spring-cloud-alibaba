@@ -1,6 +1,6 @@
 package com.example.openfeign.controller;
 
-import com.example.openfeign.service.CommonsService;
+import com.example.openfeign.service.ICommonsService;
 import com.share.foreign.wrapper.BaseDTO;
 import com.share.foreign.wrapper.ResponseTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ import java.util.Map;
 public class CommonsController {
 
     @Resource
-    private CommonsService commonsService;
+    private ICommonsService commonsService;
     /**
      * test database
      *

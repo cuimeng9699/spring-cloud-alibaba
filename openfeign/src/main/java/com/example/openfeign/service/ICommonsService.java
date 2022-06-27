@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * @author cuimeng
  */
-public interface CommonsService {
+public interface ICommonsService {
 
     /**
      * @Description: 查询统一接口不分页
