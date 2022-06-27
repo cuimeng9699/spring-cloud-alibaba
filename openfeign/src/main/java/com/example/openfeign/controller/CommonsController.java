@@ -1,5 +1,6 @@
 package com.example.openfeign.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.openfeign.service.ICommonsService;
 import com.share.foreign.wrapper.BaseDTO;
 import com.share.foreign.wrapper.ResponseTemplate;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,9 +33,10 @@ public class CommonsController {
      * @return
      */
     @PostMapping(value = "/queryCommons", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseTemplate<List<Map>> queryCommons(@RequestBody BaseDTO<Map> request) {
-        List<Map> resultListMap = commonsService.queryCommons(request.getBody());
-        return ResponseTemplate.buildSuccessResult(resultListMap);
+    public ResponseTemplate<Map> queryCommons(@RequestBody BaseDTO<Map> request) {
+        log.info("请求头数据信息为{}:", JSONObject.toJSONString(request));
+        Map resultMap = commonsService.queryCommons(request.getBody());
+        return ResponseTemplate.buildSuccessResult(resultMap);
     }
 
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
@@ -21,9 +21,13 @@ class OpenfeignApplicationTests {
         //String sql = "delete from user_extend where id = 17";
         //List<Map> sql1 = userExtMapper.getSql(sql);
 
-    Map map = new HashMap();
+/*    Map map = new HashMap();
     map.put("tableName","user");
-        userExtMapper.delete(map);
+        userExtMapper.delete(map);*/
+
+        String sql = "select count(*) as count from user_extend";
+        List<Map> sql1 = userExtMapper.getSql(sql);
+    System.out.println(sql1);
     }
 
     /*@Autowired

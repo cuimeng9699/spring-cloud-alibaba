@@ -8,7 +8,7 @@
     <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
     <result column="term" jdbcType="VARCHAR" property="term" />
     <result column="order_group" jdbcType="VARCHAR" property="orderGroup" />
-    <result column="is_easy_sql" jdbcType="BIT" property="isEasySql" />
+    <result column="is_page" jdbcType="BIT" property="isPage" />
     <result column="opreation_desc" jdbcType="VARCHAR" property="opreationDesc" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -73,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, operation_type, operation_table, field_name, term, order_group, is_easy_sql, 
-    opreation_desc, create_time, update_time, is_deleted
+    id, operation_type, operation_table, field_name, term, order_group, is_page, opreation_desc, 
+    create_time, update_time, is_deleted
   </sql>
   <select id="selectByExample" parameterType="com.example.openfeign.dao.po.OperationSqlConfigExample" resultMap="BaseResultMap">
     select
@@ -119,11 +119,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into operation_sql_config (operation_type, operation_table, field_name, 
-      term, order_group, is_easy_sql, 
+      term, order_group, is_page, 
       opreation_desc, create_time, update_time, 
       is_deleted)
     values (#{operationType,jdbcType=VARCHAR}, #{operationTable,jdbcType=VARCHAR}, #{fieldName,jdbcType=VARCHAR}, 
-      #{term,jdbcType=VARCHAR}, #{orderGroup,jdbcType=VARCHAR}, #{isEasySql,jdbcType=BIT}, 
+      #{term,jdbcType=VARCHAR}, #{orderGroup,jdbcType=VARCHAR}, #{isPage,jdbcType=BIT}, 
       #{opreationDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{isDeleted,jdbcType=BIT})
   </insert>
@@ -148,8 +148,8 @@
       <if test="orderGroup != null">
         order_group,
       </if>
-      <if test="isEasySql != null">
-        is_easy_sql,
+      <if test="isPage != null">
+        is_page,
       </if>
       <if test="opreationDesc != null">
         opreation_desc,
@@ -180,8 +180,8 @@
       <if test="orderGroup != null">
         #{orderGroup,jdbcType=VARCHAR},
       </if>
-      <if test="isEasySql != null">
-        #{isEasySql,jdbcType=BIT},
+      <if test="isPage != null">
+        #{isPage,jdbcType=BIT},
       </if>
       <if test="opreationDesc != null">
         #{opreationDesc,jdbcType=VARCHAR},
@@ -224,8 +224,8 @@
       <if test="record.orderGroup != null">
         order_group = #{record.orderGroup,jdbcType=VARCHAR},
       </if>
-      <if test="record.isEasySql != null">
-        is_easy_sql = #{record.isEasySql,jdbcType=BIT},
+      <if test="record.isPage != null">
+        is_page = #{record.isPage,jdbcType=BIT},
       </if>
       <if test="record.opreationDesc != null">
         opreation_desc = #{record.opreationDesc,jdbcType=VARCHAR},
@@ -252,7 +252,7 @@
       field_name = #{record.fieldName,jdbcType=VARCHAR},
       term = #{record.term,jdbcType=VARCHAR},
       order_group = #{record.orderGroup,jdbcType=VARCHAR},
-      is_easy_sql = #{record.isEasySql,jdbcType=BIT},
+      is_page = #{record.isPage,jdbcType=BIT},
       opreation_desc = #{record.opreationDesc,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -279,8 +279,8 @@
       <if test="orderGroup != null">
         order_group = #{orderGroup,jdbcType=VARCHAR},
       </if>
-      <if test="isEasySql != null">
-        is_easy_sql = #{isEasySql,jdbcType=BIT},
+      <if test="isPage != null">
+        is_page = #{isPage,jdbcType=BIT},
       </if>
       <if test="opreationDesc != null">
         opreation_desc = #{opreationDesc,jdbcType=VARCHAR},
@@ -304,7 +304,7 @@
       field_name = #{fieldName,jdbcType=VARCHAR},
       term = #{term,jdbcType=VARCHAR},
       order_group = #{orderGroup,jdbcType=VARCHAR},
-      is_easy_sql = #{isEasySql,jdbcType=BIT},
+      is_page = #{isPage,jdbcType=BIT},
       opreation_desc = #{opreationDesc,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -325,13 +325,13 @@
   </select>
   <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
     insert into operation_sql_config
-    (operation_type, operation_table, field_name, term, order_group, is_easy_sql, opreation_desc, 
+    (operation_type, operation_table, field_name, term, order_group, is_page, opreation_desc, 
       create_time, update_time, is_deleted)
     values
     <foreach collection="list" item="item" separator=",">
       (#{item.operationType,jdbcType=VARCHAR}, #{item.operationTable,jdbcType=VARCHAR}, 
         #{item.fieldName,jdbcType=VARCHAR}, #{item.term,jdbcType=VARCHAR}, #{item.orderGroup,jdbcType=VARCHAR}, 
-        #{item.isEasySql,jdbcType=BIT}, #{item.opreationDesc,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.isPage,jdbcType=BIT}, #{item.opreationDesc,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
         #{item.updateTime,jdbcType=TIMESTAMP}, #{item.isDeleted,jdbcType=BIT})
     </foreach>
   </insert>
@@ -360,8 +360,8 @@
         <if test="'order_group'.toString() == column.value">
           #{item.orderGroup,jdbcType=VARCHAR}
         </if>
-        <if test="'is_easy_sql'.toString() == column.value">
-          #{item.isEasySql,jdbcType=BIT}
+        <if test="'is_page'.toString() == column.value">
+          #{item.isPage,jdbcType=BIT}
         </if>
         <if test="'opreation_desc'.toString() == column.value">
           #{item.opreationDesc,jdbcType=VARCHAR}

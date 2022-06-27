@@ -1,13 +1,14 @@
 package com.example.openfeign.dao.po;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 
 @Data
 @Builder
@@ -26,7 +27,7 @@ public class OperationSqlConfig implements Serializable {
 
     private String orderGroup;
 
-    private Boolean isEasySql;
+    private Boolean isPage;
 
     private String opreationDesc;
 
@@ -50,7 +51,7 @@ public class OperationSqlConfig implements Serializable {
         sb.append(", fieldName=").append(fieldName);
         sb.append(", term=").append(term);
         sb.append(", orderGroup=").append(orderGroup);
-        sb.append(", isEasySql=").append(isEasySql);
+        sb.append(", isPage=").append(isPage);
         sb.append(", opreationDesc=").append(opreationDesc);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
@@ -67,7 +68,7 @@ public class OperationSqlConfig implements Serializable {
         fieldName("field_name", "fieldName", "VARCHAR", false),
         term("term", "term", "VARCHAR", false),
         orderGroup("order_group", "orderGroup", "VARCHAR", false),
-        isEasySql("is_easy_sql", "isEasySql", "BIT", false),
+        isPage("is_page", "isPage", "BIT", false),
         opreationDesc("opreation_desc", "opreationDesc", "VARCHAR", false),
         createTime("create_time", "createTime", "TIMESTAMP", false),
         updateTime("update_time", "updateTime", "TIMESTAMP", false),

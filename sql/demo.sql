@@ -202,6 +202,7 @@ CREATE TABLE `SPRING_SESSION_ATTRIBUTES`
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4;
 
+-- 数据库配置表将sql配置到此表进行commons接口使用
 CREATE TABLE `operation_sql_config`
 (
   `id`              bigint(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -210,7 +211,7 @@ CREATE TABLE `operation_sql_config`
   `field_name`      varchar(2048)       NOT NULL DEFAULT '' COMMENT '字段名',
   `term`            varchar(2048)       NOT NULL DEFAULT '' COMMENT '条件',
   `order_group`     varchar(128)        NOT NULL DEFAULT '' COMMENT '排序和分组',
-  `is_easy_sql`     tinyint(1)          NOT NULL DEFAULT '1' COMMENT '1:是；0：否',
+  `is_page`         tinyint(1)          NOT NULL DEFAULT '0' COMMENT '0:不分页；1：分页',
   `opreation_desc`  varchar(128)        NOT NULL DEFAULT '' COMMENT '操作描述',
   `create_time`     timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time`     timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -219,6 +220,17 @@ CREATE TABLE `operation_sql_config`
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4 COMMENT ='操作数据库配置表';
-INSERT INTO `operation_sql_config` (`id`, `operation_type`, `operation_table`, `field_name`, `term`, `order_group`, `is_easy_sql`, `opreation_desc`, `create_time`, `update_time`, `is_deleted`) VALUES (1, 'SELECT', 'user_extend', 'select user_name as userName,city_name as cityName,area_name as areaName from user_extend', 'city_id = ,user_name like', 'order by create_time desc', 0, '用户扩展表查询', '2022-06-25 11:53:40', '2022-06-27 09:34:32', 0);
-INSERT INTO `operation_sql_config` (`id`, `operation_type`, `operation_table`, `field_name`, `term`, `order_group`, `is_easy_sql`, `opreation_desc`, `create_time`, `update_time`, `is_deleted`) VALUES (2, 'SELECT', 'user_extend,user', 'select ue.user_name as userName,u.address as address from user_extend ue left join user u on ue.user_id = u.id  ', 'ue.city_id = , u.name like', 'order by ue.create_time desc', 1, '用户俩表关联查询', '2022-06-26 21:16:43', '2022-06-26 22:06:56', 0);
-
+INSERT INTO `nacos_test`.`operation_sql_config` (`id`, `operation_type`, `operation_table`, `field_name`, `term`,
+                                                 `order_group`, `is_page`, `opreation_desc`, `create_time`,
+                                                 `update_time`, `is_deleted`)
+VALUES (1, 'SELECT', 'user_extend',
+        'select user_name as userName,city_name as cityName,area_name as areaName from user_extend',
+        'city_id = ,user_name like', 'order by create_time desc', 0, '用户扩展表查询', '2022-06-25 11:53:40',
+        '2022-06-27 09:34:32', 0);
+INSERT INTO `nacos_test`.`operation_sql_config` (`id`, `operation_type`, `operation_table`, `field_name`, `term`,
+                                                 `order_group`, `is_page`, `opreation_desc`, `create_time`,
+                                                 `update_time`, `is_deleted`)
+VALUES (2, 'SELECT', 'user_extend,user',
+        'select ue.user_name as userName,u.address as address from user_extend ue left join user u on ue.user_id = u.id  ',
+        'ue.city_id = , u.name like', 'order by ue.create_time desc', 1, '用户俩表关联查询', '2022-06-26 21:16:43',
+        '2022-06-26 22:06:56', 0);

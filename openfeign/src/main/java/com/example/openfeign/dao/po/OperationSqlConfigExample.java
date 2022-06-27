@@ -554,63 +554,63 @@ public class OperationSqlConfigExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlIsNull() {
-            addCriterion("is_easy_sql is null");
+        public Criteria andIsPageIsNull() {
+            addCriterion("is_page is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlIsNotNull() {
-            addCriterion("is_easy_sql is not null");
+        public Criteria andIsPageIsNotNull() {
+            addCriterion("is_page is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlEqualTo(Boolean value) {
-            addCriterion("is_easy_sql =", value, "isEasySql");
+        public Criteria andIsPageEqualTo(Boolean value) {
+            addCriterion("is_page =", value, "isPage");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlNotEqualTo(Boolean value) {
-            addCriterion("is_easy_sql <>", value, "isEasySql");
+        public Criteria andIsPageNotEqualTo(Boolean value) {
+            addCriterion("is_page <>", value, "isPage");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlGreaterThan(Boolean value) {
-            addCriterion("is_easy_sql >", value, "isEasySql");
+        public Criteria andIsPageGreaterThan(Boolean value) {
+            addCriterion("is_page >", value, "isPage");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("is_easy_sql >=", value, "isEasySql");
+        public Criteria andIsPageGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_page >=", value, "isPage");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlLessThan(Boolean value) {
-            addCriterion("is_easy_sql <", value, "isEasySql");
+        public Criteria andIsPageLessThan(Boolean value) {
+            addCriterion("is_page <", value, "isPage");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlLessThanOrEqualTo(Boolean value) {
-            addCriterion("is_easy_sql <=", value, "isEasySql");
+        public Criteria andIsPageLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_page <=", value, "isPage");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlIn(List<Boolean> values) {
-            addCriterion("is_easy_sql in", values, "isEasySql");
+        public Criteria andIsPageIn(List<Boolean> values) {
+            addCriterion("is_page in", values, "isPage");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlNotIn(List<Boolean> values) {
-            addCriterion("is_easy_sql not in", values, "isEasySql");
+        public Criteria andIsPageNotIn(List<Boolean> values) {
+            addCriterion("is_page not in", values, "isPage");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_easy_sql between", value1, value2, "isEasySql");
+        public Criteria andIsPageBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_page between", value1, value2, "isPage");
             return (Criteria) this;
         }
 
-        public Criteria andIsEasySqlNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_easy_sql not between", value1, value2, "isEasySql");
+        public Criteria andIsPageNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_page not between", value1, value2, "isPage");
             return (Criteria) this;
         }
 
