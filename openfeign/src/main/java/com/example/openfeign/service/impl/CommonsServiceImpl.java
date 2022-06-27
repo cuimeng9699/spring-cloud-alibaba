@@ -3,7 +3,7 @@ package com.example.openfeign.service.impl;
 import com.example.openfeign.dao.mapper.OperationSqlConfigMapper;
 import com.example.openfeign.dao.mapper.extend.UserExtMapper;
 import com.example.openfeign.dao.po.OperationSqlConfig;
-import com.example.openfeign.service.CommonsService;
+import com.example.openfeign.service.ICommonsService;
 import com.share.foreign.enums.systemEnums.ErrorCode;
 import com.share.foreign.exception.BaseException;
 import com.share.foreign.utils.NumberUtil;
@@ -24,7 +24,7 @@ import java.util.Objects;
  */
 @Service
 @Slf4j
-public class CommonsServiceImpl implements CommonsService {
+public class CommonsServiceImpl implements ICommonsService {
 
     @Resource
     private UserExtMapper userExtMapper;
