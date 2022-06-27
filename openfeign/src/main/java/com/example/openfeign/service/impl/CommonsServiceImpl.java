@@ -51,26 +51,14 @@ public class CommonsServiceImpl implements CommonsService {
         }
         List<Map> resultList = new ArrayList<>();
         StringBuilder enterSqlAppend = new StringBuilder();
-        if (!operationSqlConfig.getIsEasySql()) {
-            enterSqlAppend
-                    .append(operationSqlConfig.getOperationType())
-                    .append(" ")
-                    .append(operationSqlConfig.getFieldName())
-                    .append(" ")
-                    .append("from ")
-                    .append(operationSqlConfig.getOperationTable())
-                    .append(" ")
-                    .append("where ");
-        } else {
-            String sql = operationSqlConfig.getFieldName();
-            // 这里是当入参如果小于2 那么入参是只有id
-            if (map.size() < 2){
-                enterSqlAppend.append(" ").append(sql).append(operationSqlConfig.getOrderGroup());
-                resultList = userExtMapper.getSql(String.valueOf(enterSqlAppend));
-                return resultList;
-            }
-            enterSqlAppend.append(sql).append(" where ");
+        String sql = operationSqlConfig.getFieldName();
+        // 这里是当入参如果小于2 那么入参是只有id
+        if (map.size() < 2){
+            enterSqlAppend.append(" ").append(sql).append(operationSqlConfig.getOrderGroup());
+            resultList = userExtMapper.getSql(String.valueOf(enterSqlAppend));
+            return resultList;
         }
+         enterSqlAppend.append(sql).append(" where ");
         int num = 0;
         for (Object term : map.keySet()) {
             if (String.valueOf(term).equals("id")) {
