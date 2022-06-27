@@ -26,24 +26,7 @@ public class CommonsServiceImpl implements ICommonsService {
 
   @Override
   public Map queryCommons(Map map) {
-    // 这里是准备参数去查询库里面具体的配置信息 id必传
-    if (Objects.isNull(map.get("id"))) {
-      log.error("id 参数为空 id {}", map.get("id") + "");
-      throw new BaseException(ErrorCode.MISS_PARAM_ERROR);
-    }
-    String idStr = (String) map.get("id");
-    if (!NumberUtil.isNumber(idStr)) {
-      log.error("id 参数不是数字id {}", map.get("id") + "");
-      throw new BaseException(ErrorCode.PARAM_ERROR);
-    }
-    Long id = Long.valueOf(idStr);
-    OperationSqlConfig operationSqlConfig = operationSqlConfigMapper.selectByPrimaryKey(id);
-    // 获取到配置信息进行校验是否是easy sql
-    if (Objects.isNull(operationSqlConfig)) {
-      log.error("未获取相关配置信息");
-      throw new BaseException(ErrorCode.NOT_FOUND);
-    }
-
+    OperationSqlConfig operationSqlConfig = checkParam(map);
     Integer offset = 0;
     Integer limit = 0;
     if (operationSqlConfig.getIsPage()) {
@@ -114,5 +97,33 @@ public class CommonsServiceImpl implements ICommonsService {
     resultList = userExtMapper.getSql(enterSql);
     resultMap.put("list", resultList);
     return resultMap;
+  }
+
+  /**
+   * @Description: 参数校验
+   * @Date: 6/27/22 2:57 PM
+   * @Author: Mr.Cui
+   * @param [map]
+   * @return: OperationSqlConfig
+   **/
+  private OperationSqlConfig checkParam(Map map) {
+    // 这里是准备参数去查询库里面具体的配置信息 id必传
+    if (Objects.isNull(map.get("id"))) {
+      log.error("id 参数为空 id {}", map.get("id") + "");
+      throw new BaseException(ErrorCode.MISS_PARAM_ERROR);
+    }
+    String idStr = (String) map.get("id");
+    if (!NumberUtil.isNumber(idStr)) {
+      log.error("id 参数不是数字id {}", map.get("id") + "");
+      throw new BaseException(ErrorCode.PARAM_ERROR);
+    }
+    Long id = Long.valueOf(idStr);
+    OperationSqlConfig operationSqlConfig = operationSqlConfigMapper.selectByPrimaryKey(id);
+    // 获取到配置信息进行校验是否是easy sql
+    if (Objects.isNull(operationSqlConfig)) {
+      log.error("未获取相关配置信息");
+      throw new BaseException(ErrorCode.NOT_FOUND);
+    }
+    return operationSqlConfig;
   }
 }
