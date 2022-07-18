@@ -1,13 +1,16 @@
 package com.example.openfeign.dao.po;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
+import com.share.foreign.annotation.DataMasking;
+import com.share.foreign.enums.systemEnums.DataMaskingFunc;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 
 @Data
 @Builder
@@ -17,7 +20,7 @@ public class UserExtend implements Serializable {
     private Long id;
 
     private Long userId;
-
+    @DataMasking(maskFunc = DataMaskingFunc.ALL_MASK)
     private String userName;
 
     private Integer cityId;

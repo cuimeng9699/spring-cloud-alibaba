@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.Objects;
 
 /** @author Mr.Cui */
 @Slf4j
@@ -36,7 +37,14 @@ public class UserBaseInfoInterceptor implements HandlerInterceptor {
       if (StringUtils.isNotBlank(userIdString)) {
         long start = System.currentTimeMillis();
         User user = userExtMapper.selectByPrimaryKey(Integer.valueOf(userIdString));
-        BeanUtils.copyProperties(user, userDTO);
+        if (Objects.nonNull(user)) {
+          BeanUtils.copyProperties(user, userDTO);
+        }else {
+          userDTO.setId(1);
+          userDTO.setName("user");
+          userDTO.setBirthday(new Date());
+          userDTO.setAddress("北京");
+        }
       } else {
         userDTO.setId(1);
         userDTO.setName("user");
