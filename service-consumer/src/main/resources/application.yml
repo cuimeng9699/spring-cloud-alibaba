@@ -6,3 +6,6 @@ remote:
   service:
     consumer:
       name: service-consumer
+    openfeign:
+      name: openfeign
+      path: /openfeign

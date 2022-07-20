@@ -4,6 +4,7 @@ import com.example.openfeign.dao.mapper.OperationSqlConfigMapper;
 import com.example.openfeign.dao.mapper.extend.UserExtMapper;
 import com.example.openfeign.dao.po.OperationSqlConfig;
 import com.example.openfeign.service.ICommonsService;
+import com.share.foreign.constants.Constants;
 import com.share.foreign.enums.systemEnums.ErrorCode;
 import com.share.foreign.exception.BaseException;
 import com.share.foreign.utils.CharacterUtils;
@@ -30,13 +31,12 @@ public class CommonsServiceImpl implements ICommonsService {
     Integer offset = 0;
     Integer limit = 0;
     if (operationSqlConfig.getIsPage()) {
-      if (StringUtils.isBlank(String.valueOf(map.get("pageSize")))
-          || StringUtils.isBlank(String.valueOf(map.get("pageNum")))) {
-        log.error("缺少参数 pageSize {},pageNum {}", map.get("pageSize") + "", map.get("pageNum") + "");
+      if (Objects.isNull(map.get(Constants.PAGE_SIZE)) || Objects.isNull(map.get(Constants.PAGE_NUM))) {
+        log.error("缺少参数 pageSize {},pageNum {}", map.get(Constants.PAGE_SIZE) + "", map.get(Constants.PAGE_NUM) + "");
         throw new BaseException(ErrorCode.MISS_PARAM_ERROR);
       }
-      Integer pageSize = Integer.valueOf(String.valueOf(map.get("pageSize")));
-      Integer pageNum = Integer.valueOf(String.valueOf(map.get("pageNum")));
+      Integer pageSize = Integer.valueOf(String.valueOf(map.get(Constants.PAGE_SIZE)));
+      Integer pageNum = Integer.valueOf(String.valueOf(map.get(Constants.PAGE_NUM)));
       offset = (pageNum - 1) * pageSize;
       limit = pageSize;
     }
@@ -103,7 +103,7 @@ public class CommonsServiceImpl implements ICommonsService {
    * @Description: 参数校验
    * @Date: 6/27/22 2:57 PM
    * @Author: Mr.Cui
-   * @param [map]
+   * @param map
    * @return: OperationSqlConfig
    **/
   private OperationSqlConfig checkParam(Map map) {

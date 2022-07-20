@@ -2,13 +2,12 @@ package com.example.openfeign.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.openfeign.service.ICommonsService;
+import com.share.foreign.api.CommonsRemoteService;
 import com.share.foreign.wrapper.BaseDTO;
 import com.share.foreign.wrapper.ResponseTemplate;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -19,22 +18,24 @@ import java.util.Map;
  * @Author Mr.Cui
  * @Date 6/26/22 10:09 PM
  */
-@RestController
-@RequestMapping("/commons")
+@Controller
 @Slf4j
-public class CommonsController {
+public class CommonsController implements CommonsRemoteService {
 
     @Resource
     private ICommonsService commonsService;
+
     /**
-     * test database
-     *
-     * @return
-     */
-    @PostMapping(value = "/queryCommons")
-    public ResponseTemplate<Map> queryCommons(@RequestBody BaseDTO<Map> request) {
-        log.info("请求头数据信息为{}:", JSONObject.toJSONString(request));
-        Map resultMap = commonsService.queryCommons(request.getBody());
+     * @Description: TODO
+     * @Date: 7/20/22 9:41 AM
+     * @Author: Mr.Cui
+     * @param requestMap
+     * @return: ResponseTemplate<Map>
+     **/
+    @Override
+    public ResponseTemplate<Map> queryCommons(@RequestBody BaseDTO<Map> requestMap) {
+        log.info("请求头数据信息为{}:", JSONObject.toJSONString(requestMap));
+        Map resultMap = commonsService.queryCommons(requestMap.getBody());
         return ResponseTemplate.buildSuccessResult(resultMap);
     }
 
