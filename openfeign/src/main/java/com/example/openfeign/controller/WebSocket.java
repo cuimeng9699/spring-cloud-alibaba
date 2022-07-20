@@ -23,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 前后端交互的类实现消息的接收推送
  * WebSocket
  *
- * @author mackliyuan
+ * @author cuimeng
  * @ServerEndpoint(value = "/ws/pullAlarm") 前端通过此URI和后端交互，建立连接
  */
 @Slf4j
