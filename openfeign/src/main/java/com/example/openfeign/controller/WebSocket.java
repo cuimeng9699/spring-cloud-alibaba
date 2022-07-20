@@ -36,7 +36,7 @@ public class WebSocket {
      */
     private static Map<Long, UserSessionDTO> onlineUser = new ConcurrentHashMap<>();
     /**
-     * 接警人员 长链接 所在的ip
+     *  长链接 所在的ip
      */
     private static final String alarm_user_map = "alarm_user_map";
     public static RedissonClient redisClient;
@@ -74,9 +74,8 @@ public class WebSocket {
     /**
      * 收到客户端消息后调用的方法
      * 收到信息后判定该用户是否可以接警
-     * 如果可以接警则查询 是否有该指挥中心的警情
      * 如果有返回有，如果无则返回无
-     * 之后存储该 用户的session信息,用于后续给用户推送警情
+     * 之后存储该 用户的session信息,用于后续给用户推送消息
      *
      * @param message 客户端发送过来的消息
      */
