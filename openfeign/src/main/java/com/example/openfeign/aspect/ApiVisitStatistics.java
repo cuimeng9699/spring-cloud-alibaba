@@ -45,8 +45,9 @@ public class ApiVisitStatistics {
         (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
     HttpServletRequest request = attributes.getRequest();
     // 记录请求的内容
-    log.info("Call address:" + request.getRequestURL().toString());
-    log.info("Call_Method:" + request.getMethod());
+    log.info("Call address:{}" , request.getRequestURL().toString());
+    log.info("Call_Method:{}" , request.getMethod());
+    log.info("请求头数据信息为：{}" , JSON.toJSONString(args[0]));
     log.info("Api访问次数：" + key + "=" + map.get(key));
   }
 

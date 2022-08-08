@@ -1,6 +1,5 @@
 package com.example.openfeign.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.example.openfeign.service.ICommonsService;
 import com.share.foreign.api.CommonsRemoteService;
 import com.share.foreign.wrapper.BaseDTO;
@@ -34,7 +33,6 @@ public class CommonsController implements CommonsRemoteService {
      **/
     @Override
     public ResponseTemplate<Map> queryCommons(@RequestBody BaseDTO<Map> requestMap) {
-        log.info("请求头数据信息为{}:", JSONObject.toJSONString(requestMap));
         Map resultMap = commonsService.queryCommons(requestMap.getBody());
         return ResponseTemplate.buildSuccessResult(resultMap);
     }

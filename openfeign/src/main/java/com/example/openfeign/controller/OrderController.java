@@ -56,7 +56,6 @@ public class OrderController {
    */
   @PostMapping(value = "/mapper", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseTemplate<User> mapper(@RequestBody BaseDTO<UserDTO> request) {
-    log.info("请求头数据信息为{}:", JSONObject.toJSONString(request));
     User user = testService.getUserById(request.getBody().getId());
 
     log.debug("==============" + user);

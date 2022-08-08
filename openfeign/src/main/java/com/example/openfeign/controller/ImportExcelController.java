@@ -88,7 +88,6 @@ public class ImportExcelController {
      **/
     @PostMapping("/queryUserContext")
     public ResponseTemplate<List<UserExtend>> queryUserContext(@RequestBody BaseDTO<List<Long>> idList) {
-        log.info("请求头数据信息为{}:", JSONObject.toJSONString(idList));
         List<UserExtend> userExtendList = importExcelService.queryUserContext(idList.getBody());
         return ResponseTemplate.buildSuccessResult(userExtendList);
     }

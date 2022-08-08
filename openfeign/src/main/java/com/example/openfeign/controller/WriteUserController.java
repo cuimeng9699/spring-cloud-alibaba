@@ -35,7 +35,6 @@ public class WriteUserController {
      **/
     @PostMapping("/deleteUserById")
     public ResponseTemplate<Boolean> deleteUserById (@RequestBody BaseDTO<UserExtendDTO> userExtendDTO){
-        log.info("请求头数据信息为{}:", JSONObject.toJSONString(userExtendDTO));
         Boolean delete = writeUserService.deleteUserById(userExtendDTO.getBody());
         return ResponseTemplate.buildSuccessResult(delete);
     }
@@ -49,7 +48,6 @@ public class WriteUserController {
      **/
     @PostMapping("/deleteUserByIdList")
     public ResponseTemplate<Boolean> deleteUserByIdList (@RequestBody BaseDTO<UserExtendDTO> userExtendDTO){
-        log.info("请求头数据信息为{}:", JSONObject.toJSONString(userExtendDTO));
         Boolean delete = writeUserService.deleteUserByIdList(userExtendDTO.getBody());
         return ResponseTemplate.buildSuccessResult(delete);
     }
@@ -63,7 +61,6 @@ public class WriteUserController {
      **/
     @PostMapping("/updateUserById")
     public ResponseTemplate<Boolean> updateUserById (@RequestBody BaseDTO<UserExtendDTO> userExtendDTO){
-        log.info("请求头数据信息为{}:", JSONObject.toJSONString(userExtendDTO));
         Boolean update = writeUserService.updateUserById(userExtendDTO.getBody());
         return ResponseTemplate.buildSuccessResult(update);
     }
