@@ -56,8 +56,8 @@ public class ApiVisitStatistics {
   public void doAfterReturning(JoinPoint joinPoint, Object returnVal) {
     HttpServletRequest request =
         ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-    log.info("方法执行时间:" + (System.currentTimeMillis() - startTime.get()));
-    log.info("方法返回值:" + JSON.toJSONString(returnVal));
+    log.info("方法执行时间:{}" , (System.currentTimeMillis() - startTime.get()));
+    log.info("方法返回值:{}" , JSON.toJSONString(returnVal));
   }
 
   /** 当接口报错时执行此方法 */
