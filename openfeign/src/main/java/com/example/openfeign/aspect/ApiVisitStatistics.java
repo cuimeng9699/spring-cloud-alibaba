@@ -45,9 +45,9 @@ public class ApiVisitStatistics {
         (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
     HttpServletRequest request = attributes.getRequest();
     // 记录请求的内容
-    log.info("Call address:{}" , request.getRequestURL().toString());
-    log.info("Call_Method:{}" , request.getMethod());
-    log.info("请求头数据信息为：{}" , JSON.toJSONString(args[0]));
+    log.info("Call address:{}", request.getRequestURL().toString());
+    log.info("Call_Method:{}", request.getMethod());
+    log.info("请求头数据信息为：{}", JSON.toJSONString(args));
     log.info("Api访问次数：" + key + "=" + map.get(key));
   }
 
@@ -56,8 +56,8 @@ public class ApiVisitStatistics {
   public void doAfterReturning(JoinPoint joinPoint, Object returnVal) {
     HttpServletRequest request =
         ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-    log.info("方法执行时间:{}" , (System.currentTimeMillis() - startTime.get()));
-    log.info("方法返回值:{}" , JSON.toJSONString(returnVal));
+    log.info("方法执行时间:{} ms", (System.currentTimeMillis() - startTime.get()));
+    log.info("方法返回值:{}", JSON.toJSONString(returnVal));
   }
 
   /** 当接口报错时执行此方法 */
